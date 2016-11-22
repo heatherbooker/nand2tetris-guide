@@ -1,48 +1,48 @@
 <template>
+
   <div class="nand-sidebar">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
+    <ul class="nand-sidebar--list">
+      <li><a href="">Intro</a></li>
+      <li><a href="">Chapter 1</a></li>
+      <li><a href="">Chapter 2</a></li>
+      <li><a href="">Chapter 3</a></li>
+      <li><a href="">Chapter 4</a></li>
+      <li><a href="">Chapter 5</a></li>
     </ul>
   </div>
+
 </template>
 
+
 <script>
+
 export default {
-  name: 'hello',
+  name: 'sidebar',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+    };
   }
-}
+};
+
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
+
 .nand-sidebar {
   width: 15%;
 }
+
 h1, h2 {
   font-weight: normal;
 }
 
-ul {
+.nand-sidebar--list {
   list-style-type: none;
-  padding: 0;
 }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
+.nand-sidebar--list li a {
+  text-decoration: none;
 }
 
-a {
-  color: #42b983;
-}
 </style>

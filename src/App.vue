@@ -1,29 +1,43 @@
 <template>
+
   <div id="app">
-    <sidebar></sidebar>
+    <intro></intro>
+    <chapter id="5"></chapter>
   </div>
+
 </template>
 
 
 <script>
+
 import Sidebar from './components/Sidebar';
+import Intro from './components/Intro';
+import Chapter from './components/Chapter';
 
 export default {
   name: 'app',
   components: {
-    Sidebar
+    Sidebar,
+    Intro,
+    Chapter
   }
-}
+};
+
 </script>
 
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+div {
+  margin: 15px 0px; 
 }
+
+#app {
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+}
+
 </style>
