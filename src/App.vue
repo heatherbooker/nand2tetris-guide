@@ -28,10 +28,6 @@ export default {
 
 <style>
 
-div {
-  margin: 15px 0px; 
-}
-
 #app {
   font-family: 'Open Sans', sans-serif;
   display: flex;

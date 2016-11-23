@@ -3,6 +3,8 @@
   <div>
     <h4 class="f3 lh-copy">Computation Instruction</h4>
     <p></p>
+    <p>The <b>computation instruction</b> is similarly a group of 16 bits, the most significant (left-most) of which is <code>1</code>. The next 2 digits to the right are not used.</p>
+    <p>The remaining 13 bits can be further split into subgroups. Each subgroup controls an aspect of the instruction - <b>what</b>, <b>where</b>, and what's <b>next</b>.</p>
     <sixteen-bits :initial-bitgroups="bitGroups"></sixteen-bits>
   </div>
 
@@ -55,3 +57,10 @@
   };
 
 </script>
+
+<style type="text/css">
+  code {
+    background-color: #E1E1E1;
+    padding: 1px 4px;
+  }
+</style>

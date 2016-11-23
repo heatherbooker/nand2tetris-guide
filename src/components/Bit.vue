@@ -1,9 +1,14 @@
 <template>
   
   <div class="nand-bit">
-    {{index}}
+    {{15 - index}}
     <div class="nand-bit--box" :class="colorClass">
-      {{name}}
+      <input
+        class="nand-bit--box-input"
+        type="text"
+        v-model="name"
+        spellcheck="false"
+      >
     </div>
   </div>
   
@@ -14,22 +19,22 @@
   
   export default {
     
-    props: ['index', 'name', 'type', 'color', 'tooltipInfo'],
+    props: ['index', 'initialName', 'type', 'color', 'tooltipInfo'],
 
     data () {
       return {
-        colorClass: 'nand-bit--box__color_' + this.color
+        colorClass: 'nand-bit--box__color_' + this.color,
+        name: this.initialName
       };
     },
-
     mounted () {
 
       let content = '';
       let title = '';
 
-      if (this.tooltipInfo[this.name]) {
-        content = this.tooltipInfo[this.name].content;
-        title = this.tooltipInfo[this.name].title;
+      if (this.tooltipInfo[this.initialName]) {
+        content = this.tooltipInfo[this.initialName].content;
+        title = this.tooltipInfo[this.initialName].title;
       }
 
       new Opentip(this.$el, content, title);
@@ -39,7 +44,7 @@
 </script>
 
 
-<style>
+<style lang="scss">
   
   .nand-bit {
     text-align: center;
@@ -55,6 +60,19 @@
     align-items: center;
     color: #fff;
     font-weight: bold;
+  }
+
+  .nand-bit--box-input {
+    background-color: inherit;
+    border: none;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    width: 50px;
+    color: inherit;
+    text-align: center;
+    &:focus {
+      outline: none;
+    }
   }
 
   .nand-bit--box__color_blue {

@@ -1,6 +1,6 @@
 <template>
   
-  <div class="nand-16bitInstructions center">
+  <div class="nand-16bitInstructions center mv4">
     <bit-group
       v-for="(bitGroup, i) in bitGroups"
       :bitGroup="bitGroup"

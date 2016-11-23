@@ -1,51 +1,51 @@
 {
   "v": {
-    "title": "The Determinant Chip",
-    "content": "This chip (which we have chosen to depict as \"V\") determines whether the remaining 15 bits of input denote an address instruction or a computation."
+    "title": "Most significant bit",
+    "content": "This bit (which we have chosen to depict as \"V\") determines whether the remaining 15 bits of input denote an address instruction or a computation."
   }, "x1": {
-    "title": ".",
-    "content": "." 
+    "title": "",
+    "content": "" 
   }, "x2": {
-    "title": ".",
-    "content": "."
+    "title": "",
+    "content": ""
   }, "a": {
-    "title": ".",
-    "content": "." 
+    "title": "",
+    "content": "" 
   }, "c1": {
-    "title": ".",
-    "content": "." 
+    "title": "",
+    "content": "" 
   }, "c2": {
-    "title": ".",
-    "content": "." 
+    "title": "",
+    "content": "" 
   }, "c3": {
-    "title": ".",
-    "content": "." 
+    "title": "",
+    "content": "" 
   }, "c4": {
-    "title": ".",
-    "content": "." 
+    "title": "",
+    "content": "" 
   }, "c5": {
-    "title": ".",
-    "content": "." 
+    "title": "",
+    "content": "" 
   }, "c6": {
-    "title": ".",
-    "content": "." 
+    "title": "",
+    "content": "" 
   }, "d1": {
-    "title": ".",
-    "content": "." 
+    "title": "Destination",
+    "content": "<b>A</b>: Store result in register A (in CPU)." 
   }, "d2": {
-    "title": ".",
-    "content": "." 
+    "title": "Destination",
+    "content": "<b>D</b>: Store result in register A (in CPU)."
   }, "d3": {
-    "title": ".",
-    "content": "." 
+    "title": "Destination",
+    "content": "<b>M[A]</b>: Store result in memory at address specified in register A." 
   }, "j1": {
     "title": "Jump Logic",
-    "content": "." 
+    "content": "" 
   }, "j2": {
     "title": "Jump Logic",
-    "content": "." 
+    "content": "" 
   }, "j3": {
     "title": "Jump Logic",
-    "content": "." 
+    "content": "" 
   }
 }

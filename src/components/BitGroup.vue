@@ -4,7 +4,7 @@
     <bit
       v-for="(bit, i) in bits"
       :index="bitGroup.startIndex + i"
-      :name="bit.name"
+      :initialName="bit.name"
       :type="bit.type"
       :color="bit.color"
       :tooltipInfo="tooltipInfo"
