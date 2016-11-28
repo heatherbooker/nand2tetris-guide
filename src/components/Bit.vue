@@ -2,11 +2,16 @@
   
   <div class="nand-bit">
     {{15 - index}}
-    <div class="nand-bit--box" :class="colorClass">
+    <div class="nand-bit-box" :class="colorClass">
+      <label :class="labelClass">
+        {{initialName}}
+      </label>
       <input
-        class="nand-bit--box-input"
+        class="nand-bit-box-input"
         type="text"
         v-model="name"
+        @focus="shrinkLabel"
+        @blur="growLabelIfEmpty"
         spellcheck="false"
       >
     </div>
@@ -19,15 +24,17 @@
   
   export default {
     
-    props: ['index', 'initialName', 'type', 'color', 'tooltipInfo'],
+    props: ['index', 'initialName', 'initialValue', 'color', 'tooltipInfo'],
 
     data () {
       return {
-        colorClass: 'nand-bit--box__color_' + this.color,
-        name: this.initialName
+        colorClass: 'nand-bit-box__color_' + this.color,
+        labelClass: 'nand-bit-label--shrink',
+        name: this.initialValue || ''
       };
     },
     mounted () {
+      console.log(this.initialValue);
 
       let content = '';
       let title = '';
@@ -38,6 +45,16 @@
       }
 
       new Opentip(this.$el, content, title);
+    },
+    methods: {
+      shrinkLabel () {
+        this.labelClass = 'nand-bit-label--shrink';
+      },
+      growLabelIfEmpty () {
+        if (!this.name) {
+          this.labelClass = 'nand-bit-label';
+        }
+      }
     }
   };
 
@@ -52,22 +69,29 @@
     flex: 1;
   }
 
-  .nand-bit--box {
+  .nand-bit-box {
     border: 1px solid grey;
     height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: #fff;
     font-weight: bold;
   }
 
-  .nand-bit--box-input {
+  .nand-bit-label {
+    position: relative;
+    top: 30%;
+  }
+
+  .nand-bit-label--shrink {
+    font-size: 10pt;
+    opacity: .75;
+    position: relative;
+    left: -10px;
+  }
+
+  .nand-bit-box-input {
     background-color: inherit;
     border: none;
-    border-left: 1px solid grey;
-    border-right: 1px solid grey;
-    width: 50px;
+    width: 100%;
     color: inherit;
     text-align: center;
     &:focus {
@@ -75,27 +99,27 @@
     }
   }
 
-  .nand-bit--box__color_blue {
+  .nand-bit-box__color_blue {
     background-color: #2e284a;
   }
 
-  .nand-bit--box__color_green {
+  .nand-bit-box__color_green {
     background-color: #494566;
   }
 
-  .nand-bit--box__color_yellow {
+  .nand-bit-box__color_yellow {
     background-color: #5b5a86;
   }
 
-  .nand-bit--box__color_pink {
+  .nand-bit-box__color_pink {
     background-color: #a5884c;
   }
 
-  .nand-bit--box__color_orange {
+  .nand-bit-box__color_orange {
     background-color: #d2c791;
   }
 
-  .nand-bit--box__color_purple {
+  .nand-bit-box__color_purple {
     background-color: #a86b45;
   }
 

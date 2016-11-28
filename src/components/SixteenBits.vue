@@ -23,7 +23,7 @@
     props: ['initialBitgroups'],
     data () {
       return {
-        bitGroups: [],
+        bits: [],
         colors: ['blue', 'green', 'yellow', 'pink', 'orange', 'purple'],
         tooltipInfo: info
       };
@@ -37,11 +37,29 @@
           }
           bits[i].color = colors[colorI];
         }
+      },
+      enumerateBits (bitsInGroup) {
+        let bits = [];
+        for (let i = 0; i < bitsInGroup.num; i++) {
+          let name;
+          if (bitsInGroup.num <= 1) {
+            name = bitsInGroup.type;
+          } else {
+            name = bitsInGroup.type + (i + 1);
+          }
+          bits.push({
+            name
+          });
+          console.log(bits);
+          this.assignColors(bits, this.colors);
+        }
+        return bits;
       }
     },
     created () {
-      this.bitGroups = this.initialBitgroups;
-      this.assignColors(this.bitGroups, this.colors);
+      this.bits = this.initialBitgroups.reduce((allBits, bitGroup) => {
+        return this.enumerateBits(bitGroup);
+      });
     }
   };
 
@@ -52,5 +70,9 @@
   .nand-16bitInstructions {
     display: flex;
   }
-
+  code {
+    background-color: #E1E1E1;
+    padding: 1px 4px;
+  }
+  
 </style>

@@ -1,51 +1,73 @@
 {
-  "v": {
-    "title": "Most significant bit",
-    "content": "This bit (which we have chosen to depict as \"V\") determines whether the remaining 15 bits of input denote an address instruction or a computation."
-  }, "x1": {
-    "title": "",
-    "content": "" 
-  }, "x2": {
-    "title": "",
-    "content": ""
-  }, "a": {
-    "title": "",
-    "content": "" 
-  }, "c1": {
-    "title": "",
-    "content": "" 
-  }, "c2": {
-    "title": "",
-    "content": "" 
-  }, "c3": {
-    "title": "",
-    "content": "" 
-  }, "c4": {
-    "title": "",
-    "content": "" 
-  }, "c5": {
-    "title": "",
-    "content": "" 
-  }, "c6": {
-    "title": "",
-    "content": "" 
-  }, "d1": {
-    "title": "Destination",
-    "content": "<b>A</b>: Store result in register A (in CPU)." 
-  }, "d2": {
-    "title": "Destination",
-    "content": "<b>D</b>: Store result in register A (in CPU)."
-  }, "d3": {
-    "title": "Destination",
-    "content": "<b>M[A]</b>: Store result in memory at address specified in register A." 
-  }, "j1": {
-    "title": "Jump Logic",
-    "content": "" 
-  }, "j2": {
-    "title": "Jump Logic",
-    "content": "" 
-  }, "j3": {
-    "title": "Jump Logic",
-    "content": "" 
+  "bits": {
+    "v": {
+      "title": "Most significant bit",
+      "content": "This bit (which we have chosen to depict as \"V\") determines whether the remaining 15 bits of input denote an address instruction or a computation."
+    }, "x1": {
+      "title": "",
+      "content": "" 
+    }, "x2": {
+      "title": "",
+      "content": ""
+    }, "a": {
+      "title": "",
+      "content": "" 
+    }, "c1": {
+      "title": "",
+      "content": "" 
+    }, "c2": {
+      "title": "",
+      "content": "" 
+    }, "c3": {
+      "title": "",
+      "content": "" 
+    }, "c4": {
+      "title": "",
+      "content": "" 
+    }, "c5": {
+      "title": "",
+      "content": "" 
+    }, "c6": {
+      "title": "",
+      "content": "" 
+    }, "d1": {
+      "title": "Destination",
+      "content": "<b>A</b>: Store result in register A (in CPU)." 
+    }, "d2": {
+      "title": "Destination",
+      "content": "<b>D</b>: Store result in register A (in CPU)."
+    }, "d3": {
+      "title": "Destination",
+      "content": "<b>M[A]</b>: Store result in memory at address specified in register A." 
+    }, "j1": {
+      "title": "Jump Logic",
+      "content": "" 
+    }, "j2": {
+      "title": "Jump Logic",
+      "content": "" 
+    }, "j3": {
+      "title": "Jump Logic",
+      "content": "" 
+    }
+  },
+  "computations": {
+    "0": "101010",
+    "1": "111111",
+    "-1": "111010",
+    "D": "001100",
+    "A": "110000",
+    "!D": "001101",
+    "!A": "110001",
+    "-D": "001111",
+    "-A": "110011",
+    "D+1": "011111",
+    "A+1": "110111",
+    "D-1": "001110",
+    "A-1": "110010",
+    "D+A": "000010",
+    "D-A": "010011",
+    "A-D": "000111",
+    "D&A": "000000",
+    "D|A": "010101"
   }
 }
