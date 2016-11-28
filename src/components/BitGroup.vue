@@ -5,8 +5,8 @@
       v-for="(bit, i) in bits"
       :index="bitGroup.startIndex + i"
       :initialName="bit.name"
-      :initialValue="bitGroup.val"
-      :color="bitGroup.color"
+      :type="bit.type"
+      :color="bit.color"
       :tooltipInfo="tooltipInfo"
     ></bit>
   </div>
@@ -39,7 +39,9 @@
             name = this.bitGroup.type + (i + 1);
           }
           bits.push({
-            name
+            name,
+            type: this.bitGroup.type,
+            color: this.bitGroup.color
           });
         }
         this.bits = bits;
