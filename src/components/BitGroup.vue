@@ -8,6 +8,7 @@
       :type="bit.type"
       :color="bit.color"
       :tooltipInfo="tooltipInfo"
+      @toggleBit="toggleBit"
     ></bit>
   </div>
 
@@ -45,6 +46,10 @@
           });
         }
         this.bits = bits;
+      },
+      toggleBit () {
+        this.$emit('toggleBits');
+        console.log('emit at bit');
       }
     },
     mounted () {

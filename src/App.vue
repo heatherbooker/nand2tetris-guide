@@ -36,4 +36,10 @@ export default {
   margin: 0;
 }
 
+button {
+  border: none;
+  background-color: inherit;
+  outline: none;
+}
+
 </style>

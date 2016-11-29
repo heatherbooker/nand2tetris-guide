@@ -5,6 +5,7 @@
       v-for="(bitGroup, i) in bitGroups"
       :bitGroup="bitGroup"
       :tooltipInfo="tooltipInfo"
+      @toggleBits="toggleBits"
     ></bit-group>
   </div>
 
@@ -37,6 +38,10 @@
           }
           bits[i].color = colors[colorI];
         }
+      },
+      toggleBits () {
+        this.$emit('toggleBits');
+        console.log('emiting here');
       }
     },
     created () {

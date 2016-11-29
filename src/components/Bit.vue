@@ -3,13 +3,11 @@
   <div class="nand-bit">
     {{15 - index}}
     <div class="nand-bit--box" :class="colorClass">
-      <input
-        class="nand-bit--box-input"
-        type="text"
-        v-model="name"
-        spellcheck="false"
-      >
+      <button class="nand-bit--box-button" @click="toggleValue">
+        {{value}}
+      </button>
     </div>
+    {{initialName}}
   </div>
   
 </template>
@@ -24,8 +22,14 @@
     data () {
       return {
         colorClass: 'nand-bit--box__color_' + this.color,
-        name: this.initialName
+        value: 0
       };
+    },
+    methods: {
+      toggleValue() {
+        this.value = Number(!this.value);
+        this.$emit('toggleBit', 'an argument');
+      }
     },
     mounted () {
 
@@ -62,12 +66,11 @@
     font-weight: bold;
   }
 
-  .nand-bit--box-input {
+  .nand-bit--box-button {
     background-color: inherit;
     border: none;
-    border-left: 1px solid grey;
-    border-right: 1px solid grey;
     width: 50px;
+    height: 100%;
     color: inherit;
     text-align: center;
     &:focus {

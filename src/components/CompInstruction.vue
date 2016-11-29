@@ -5,7 +5,7 @@
     <p></p>
     <p>The <b>computation instruction</b> is similarly a group of 16 bits, the most significant (left-most) of which is <code>1</code>. The next 2 digits to the right are not used.</p>
     <p>The remaining 13 bits can be further split into subgroups. Each subgroup controls an aspect of the instruction - <b>what</b>, <b>where</b>, and what's <b>next</b>.</p>
-    <sixteen-bits :initial-bitgroups="bitGroups"></sixteen-bits>
+    <sixteen-bits :initial-bitgroups="bitGroups" @toggleBits="toggleBits"></sixteen-bits>
   </div>
 
 </template>
@@ -53,6 +53,12 @@
           color: ''
         }]
       };
+    },
+    methods: {
+      toggleBits () {
+        this.$emit('toggleBits');
+        console.log('emiting');
+      }
     }
   };
 
