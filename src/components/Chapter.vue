@@ -44,7 +44,6 @@
     },
     methods: {
       updateComputation (e) {
-        console.log('clicked', e);
       }
     },
     mounted () {

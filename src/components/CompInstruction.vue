@@ -2,10 +2,9 @@
   
   <div>
     <h4 class="f3 lh-copy">Computation Instruction</h4>
-    <p></p>
     <p>The <b>computation instruction</b> is similarly a group of 16 bits, the most significant (left-most) of which is <code>1</code>. The next 2 digits to the right are not used.</p>
     <p>The remaining 13 bits can be further split into subgroups. Each subgroup controls an aspect of the instruction - <b>what</b>, <b>where</b>, and what's <b>next</b>.</p>
-    <sixteen-bits :initial-bitgroups="bitGroups" @toggleBits="toggleBits"></sixteen-bits>
+    <sixteen-bits :initial-bits="bits" @toggleBits="toggleBits"></sixteen-bits>
   </div>
 
 </template>
@@ -21,6 +20,8 @@
     },
     data () {
       return {
+        bits: [],
+        colors: ['blue', 'green', 'yellow', 'pink', 'orange', 'purple'],
         bitGroups: [{
           type: 'v',
           num: 1,
@@ -55,10 +56,43 @@
       };
     },
     methods: {
-      toggleBits () {
+      enumerateBits (bitGroup) {
+        let bits = [];
+        for (let i = 0; i < bitGroup.num; i++) {
+          let name;
+          if (bitGroup.num <= 1) {
+            name = bitGroup.type;
+          } else {
+            name = bitGroup.type + (i + 1);
+          }
+          bits.push({
+            name,
+            type: bitGroup.type,
+            color: bitGroup.color,
+            value: 0
+          });
+        }
+        return bits;
+      },
+      toggleBits (index) {
         this.$emit('toggleBits');
-        console.log('emiting');
+        this.bits[index].value = Number(!this.bits[index].value);
+      },
+      assignColors (bits, colors) {
+        for (let i = 0; i < bits.length; i++) {
+          let colorI = i;
+          while (colorI >= colors.length) {
+            colorI -= colors.length;
+          }
+          bits[i].color = colors[colorI];
+        }
       }
+    },
+    created () {
+      this.assignColors(this.bitGroups, this.colors);
+      this.bits = this.bitGroups.reduce((bits, bitGroup) => {
+        return bits.concat(this.enumerateBits(bitGroup));
+      }, []);
     }
   };
 

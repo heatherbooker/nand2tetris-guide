@@ -1,12 +1,13 @@
 <template>
   
   <div class="nand-16bitInstructions center mv4">
-    <bit-group
-      v-for="(bitGroup, i) in bitGroups"
-      :bitGroup="bitGroup"
+    <bit
+      v-for="(bit, i) in bits"
+      :index="i"
+      :bit="bit"
       :tooltipInfo="tooltipInfo"
-      @toggleBits="toggleBits"
-    ></bit-group>
+      @toggleBit="toggleBits"
+    ></bit>
   </div>
 
 </template>
@@ -14,39 +15,25 @@
 
 <script>
   
-  import BitGroup from './BitGroup';
+  import Bit from './Bit';
   import info from '../assets/sixteenBitsInfo.json';
 
   export default {
     components: {
-      BitGroup
+      Bit
     },
-    props: ['initialBitgroups'],
+    props: ['initialBits'],
     data () {
       return {
-        bitGroups: [],
+        bits: this.initialBits,
         colors: ['blue', 'green', 'yellow', 'pink', 'orange', 'purple'],
         tooltipInfo: info
       };
     },
     methods: {
-      assignColors (bits, colors) {
-        for (let i = 0; i < bits.length; i++) {
-          let colorI = i;
-          while (colorI >= colors.length) {
-            colorI -= colors.length;
-          }
-          bits[i].color = colors[colorI];
-        }
-      },
-      toggleBits () {
-        this.$emit('toggleBits');
-        console.log('emiting here');
+      toggleBits (index) {
+        this.$emit('toggleBits', index);
       }
-    },
-    created () {
-      this.bitGroups = this.initialBitgroups;
-      this.assignColors(this.bitGroups, this.colors);
     }
   };
 

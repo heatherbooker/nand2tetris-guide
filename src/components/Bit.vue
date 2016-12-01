@@ -4,10 +4,10 @@
     {{15 - index}}
     <div class="nand-bit--box" :class="colorClass">
       <button class="nand-bit--box-button" @click="toggleValue">
-        {{value}}
+        {{bit.value}}
       </button>
     </div>
-    {{initialName}}
+    {{bit.name}}
   </div>
   
 </template>
@@ -17,18 +17,16 @@
   
   export default {
     
-    props: ['index', 'initialName', 'type', 'color', 'tooltipInfo'],
+    props: ['index', 'bit', 'tooltipInfo'],
 
     data () {
       return {
-        colorClass: 'nand-bit--box__color_' + this.color,
-        value: 0
+        colorClass: 'nand-bit--box__color_' + this.bit.color
       };
     },
     methods: {
       toggleValue() {
-        this.value = Number(!this.value);
-        this.$emit('toggleBit', 'an argument');
+        this.$emit('toggleBit', this.index);
       }
     },
     mounted () {
