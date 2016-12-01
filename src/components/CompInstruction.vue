@@ -7,7 +7,7 @@
     <sixteen-bits
       :initial-bits="bits"
       @toggleBits="toggleBits"
-      :info="info"
+      :info="info.bits"
     ></sixteen-bits>
     <comp-illustration
       :operand1="operand1"
@@ -90,9 +90,17 @@
         return bits;
       },
       toggleBits (index) {
-        this.$emit('toggleBits');
         this.bits[index].value = Number(!this.bits[index].value);
-        // console.log(info.comp_instructions[this.instruction]);
+        const computation = this.info.comp_instructions[this.instruction];
+        if (!computation) {
+          this.operand1 = ' -- Not a valid instruction --';
+          this.operator = '';
+          this.operand2 = '';
+        } else {
+          this.operand1 = computation[0];
+          this.operator = computation[1];
+          this.operand2 = computation[2];
+        }
       },
       assignColors (bits, colors) {
         for (let i = 0; i < bits.length; i++) {
@@ -106,7 +114,7 @@
     },
     computed: {
       instruction () {
-        return this.bits.map(bit => bit.value);
+        return this.bits.map(bit => bit.value).join('').slice(4,10);
       }
     },
     created () {

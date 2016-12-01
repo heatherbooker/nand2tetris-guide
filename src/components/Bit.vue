@@ -34,9 +34,9 @@
       let content = '';
       let title = '';
 
-      if (this.tooltipInfo[this.initialName]) {
-        content = this.tooltipInfo[this.initialName].content;
-        title = this.tooltipInfo[this.initialName].title;
+      if (this.tooltipInfo[this.bit.name]) {
+        content = this.tooltipInfo[this.bit.name].content;
+        title = this.tooltipInfo[this.bit.name].title;
       }
 
       new Opentip(this.$el, content, title);

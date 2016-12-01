@@ -29,7 +29,7 @@
     props: ['id'],
     data () {
       return {
-        info: info,
+        info,
         classWithId: 'nand-chapter' + this.id
       };
     },
