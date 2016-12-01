@@ -4,20 +4,32 @@
     <h4 class="f3 lh-copy">Computation Instruction</h4>
     <p>The <b>computation instruction</b> is similarly a group of 16 bits, the most significant (left-most) of which is <code>1</code>. The next 2 digits to the right are not used.</p>
     <p>The remaining 13 bits can be further split into subgroups. Each subgroup controls an aspect of the instruction - <b>what</b>, <b>where</b>, and what's <b>next</b>.</p>
-    <sixteen-bits :initial-bits="bits" @toggleBits="toggleBits"></sixteen-bits>
+    <sixteen-bits
+      :initial-bits="bits"
+      @toggleBits="toggleBits"
+      :info="info"
+    ></sixteen-bits>
+    <comp-illustration
+      :operand1="operand1"
+      :operand2="operand2"
+      :operator="operator"
+    ></comp-illustration>
   </div>
 
 </template>
 
 
 <script>
-  
+
   import SixteenBits from './SixteenBits';
+  import CompIllustration from './CompIllustration';
 
   export default {
     components: {
-      SixteenBits
+      SixteenBits,
+      CompIllustration
     },
+    props: ['info'],
     data () {
       return {
         bits: [],
@@ -52,7 +64,10 @@
           num: 3,
           startIndex: 13,
           color: ''
-        }]
+        }],
+        operand1: 'D',
+        operand2: 'A',
+        operator: '&'
       };
     },
     methods: {
@@ -77,6 +92,7 @@
       toggleBits (index) {
         this.$emit('toggleBits');
         this.bits[index].value = Number(!this.bits[index].value);
+        // console.log(info.comp_instructions[this.instruction]);
       },
       assignColors (bits, colors) {
         for (let i = 0; i < bits.length; i++) {
@@ -86,6 +102,11 @@
           }
           bits[i].color = colors[colorI];
         }
+      }
+    },
+    computed: {
+      instruction () {
+        return this.bits.map(bit => bit.value);
       }
     },
     created () {

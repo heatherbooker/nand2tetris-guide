@@ -16,18 +16,17 @@
 <script>
   
   import Bit from './Bit';
-  import info from '../assets/sixteenBitsInfo.json';
 
   export default {
     components: {
       Bit
     },
-    props: ['initialBits'],
+    props: ['initialBits', 'info'],
     data () {
       return {
         bits: this.initialBits,
         colors: ['blue', 'green', 'yellow', 'pink', 'orange', 'purple'],
-        tooltipInfo: info
+        tooltipInfo: this.info
       };
     },
     methods: {

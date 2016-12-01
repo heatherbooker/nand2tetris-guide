@@ -4,7 +4,10 @@
     <h4 class="f3 lh-copy mv4">Address Instruction</h4>
     <p>The <b>address instruction</b> is a group of 16 bits, the most significant (left-most) of which is <code>0</code>. </p>
     <p>The remaining 15 bits of the address instruction will be composed of 0s and 1s, which taken together denote a location in memory, ie. an address.</p>
-    <sixteen-bits :initial-bits="bits" @toggleBits="toggleBits"></sixteen-bits>
+    <sixteen-bits
+    :info="info"
+    :initial-bits="bits"
+    @toggleBits="toggleBits"></sixteen-bits>
   </div>
 
 </template>
@@ -18,6 +21,7 @@
     components: {
       SixteenBits
     },
+    props: ['info'],
     data () {
       return {
         bits: [],

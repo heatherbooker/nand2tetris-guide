@@ -6,13 +6,11 @@
     <section>
       <p>Chapter 4 introduces two types of 16-bit instructions: <b>address</b> instructions and <b>computation</b> instructions.</p>
       <p><span>The most significant (left-most) bit</span> determines whether an instruction is an address (0) or a computation (1).</p>
-      <addr-instruction></addr-instruction>
-      <comp-instruction @toggleBits="updateComputation"></comp-instruction>
-      <comp-illustration
-        :operand1="operand1"
-        :operand2="operand2"
-        :operator="operator"
-      ></comp-illustration>
+      <addr-instruction :info="info"></addr-instruction>
+      <comp-instruction
+        @toggleBits="updateComputation"
+        :info="info"
+      ></comp-instruction>
       <h4 class="f3">Assembly</h4>
       <p>The <span id="nand-tt-assembly">assembly</span> language </p>
     </section>
@@ -23,24 +21,21 @@
 
 <script>
 
+  import info from '../assets/sixteenBitsInfo.json';
   import AddrInstruction from './AddrInstruction';
   import CompInstruction from './CompInstruction';
-  import CompIllustration from './CompIllustration';
   
   export default {
     props: ['id'],
     data () {
       return {
-        classWithId: 'nand-chapter' + this.id,
-        operand1: 'D',
-        operand2: 'A',
-        operator: '&'
+        info: info,
+        classWithId: 'nand-chapter' + this.id
       };
     },
     components: {
-      'addr-instruction': AddrInstruction,
-      'comp-instruction': CompInstruction,
-      'comp-illustration': CompIllustration
+      AddrInstruction,
+      CompInstruction
     },
     methods: {
       updateComputation (e) {
@@ -54,7 +49,7 @@
       });
       tooltipElements.forEach(el => {
         new Opentip(el.el, el.content, el.title && el.title);
-      })
+      });
     }
   };
 
