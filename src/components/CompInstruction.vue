@@ -13,6 +13,7 @@
       :operand1="operand1"
       :operand2="operand2"
       :operator="operator"
+      :jump="jump || 'No jump'"
     ></comp-illustration>
   </div>
 
@@ -67,7 +68,8 @@
         }],
         operand1: 'D',
         operand2: 'A',
-        operator: '&'
+        operator: '&',
+        jump: null
       };
     },
     methods: {
@@ -91,7 +93,7 @@
       },
       toggleBits (index) {
         this.bits[index].value = Number(!this.bits[index].value);
-        const computation = this.info.comp_instructions[this.instruction];
+        const computation = this.info.comp_instructions[this.instruction.slice(4,10)];
         if (!computation) {
           this.operand1 = ' -- Not a valid instruction --';
           this.operator = '';
@@ -101,6 +103,8 @@
           this.operator = computation[1];
           this.operand2 = computation[2];
         }
+        console.log(this.instruction.slice(12));
+        this.jump = this.info.jump_instructions[this.instruction.slice(13)];
       },
       assignColors (bits, colors) {
         for (let i = 0; i < bits.length; i++) {
@@ -114,7 +118,7 @@
     },
     computed: {
       instruction () {
-        return this.bits.map(bit => bit.value).join('').slice(4,10);
+        return this.bits.map(bit => bit.value).join('');
       }
     },
     created () {
