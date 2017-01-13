@@ -5,6 +5,7 @@
       v-for="(bit, i) in bits"
       :index="i"
       :bit="bit"
+      :hovered="!!hovered"
       :tooltipInfo="tooltipInfo"
       @toggleBit="toggleBits"
     ></bit>
@@ -21,7 +22,7 @@
     components: {
       Bit
     },
-    props: ['initialBits', 'info'],
+    props: ['initialBits', 'info', 'hovered'],
     data () {
       return {
         bits: this.initialBits,

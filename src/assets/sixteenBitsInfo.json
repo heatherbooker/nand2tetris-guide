@@ -32,13 +32,13 @@
       "content": "" 
     }, "d1": {
       "title": "Destination",
-      "content": "<b>A</b>: Store result in register A (in CPU)." 
+      "content": "<b>A</b>: Store result in register A (in CPU)."
     }, "d2": {
       "title": "Destination",
-      "content": "<b>D</b>: Store result in register A (in CPU)."
+      "content": "<b>D</b>: Store result in register D (in CPU)."
     }, "d3": {
       "title": "Destination",
-      "content": "<b>M[A]</b>: Store result in memory at address specified in register A." 
+      "content": "<b>M[A]</b>: Store result in memory at address specified in register A."
     }, "j1": {
       "title": "Jump Logic",
       "content": "" 
@@ -71,7 +71,7 @@
     "010101": "D|A"
   },
   "jump_instructions": {
-    "000": null,
+    "000": "No Jump",
     "001": "JGT",
     "010": "JEQ",
     "011": "JGE",

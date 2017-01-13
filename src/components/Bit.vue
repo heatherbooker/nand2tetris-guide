@@ -17,13 +17,21 @@
   
   export default {
     
-    props: ['index', 'bit', 'tooltipInfo'],
+    props: ['index', 'bit', 'tooltipInfo', 'hovered'],
 
     data () {
       return {
-        colorClass: 'nand-bit--box__color_' + this.bit.color
+        // colorClass: 'nand-bit--box__color_' + this.bit.color
       };
     },
+
+    computed: {
+      colorClass () {
+        console.log(this.hovered);
+        return 'nand-bit--box__color_' + this.bit.color + (this.hovered ? '_dark' : '');
+      }
+    },
+
     methods: {
       toggleValue() {
         this.$emit('toggleBit', this.index);
@@ -100,4 +108,27 @@
     background-color: #a86b45;
   }
 
+  .nand-bit--box__color_blue_dark {
+    background-color: #272240;
+  }
+
+  .nand-bit--box__color_green_dark {
+    background-color: #413E5C;
+  }
+
+  .nand-bit--box__color_yellow_dark {
+    background-color: #55547D;
+  }
+
+  .nand-bit--box__color_pink_dark {
+    background-color: #9C8047;
+  }
+
+  .nand-bit--box__color_orange_dark {
+    background-color: #C7BD89;
+  }
+
+  .nand-bit--box__color_purple_dark {
+    background-color: #9E6541;
+  }
 </style>
